@@ -14,6 +14,7 @@ end
 # use PostgreSQL for production so that it can run on Heroku
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 
