@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'd3_rails', '~> 3.5.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

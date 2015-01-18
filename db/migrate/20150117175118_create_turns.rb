@@ -1,7 +1,8 @@
 class CreateTurns < ActiveRecord::Migration
   def change
     create_table :turns do |t|
-	    t.integer :game_id
+	    t.integer :practice_id
+	    t.integer :user_id
 	    t.integer :aiming_for
 
       t.timestamps null: false

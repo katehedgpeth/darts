@@ -1,0 +1,164 @@
+/* Form ------------------------------ */
+
+@import "var"
+@import "mix"
+
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input,
+.input
+  @include transition
+  font:
+    family:      $avenir
+    size:        .9em
+    weight:      500
+  color:         $text
+  line-height:   100%
+  vertical-align: baseline
+  border:        1px solid $gray
+  @include radius
+  background:    #fff
+  height:        38px
+  width:         100%
+  display:       inline-block
+  padding:       .7em .9em
+  margin:        0
+  box-shadow:    inset 0 1px 1px rgba(0,0,0,0.1)
+  &:hover
+    border-bottom-color: lighten($black, 40%)
+  &:focus
+  &.active
+    border-color: $blue
+    outline:      none
+    box-shadow:    inset 0 1px 1px rgba(0,0,0,0.1) !important
+
+input[type="radio"],input[type="checkbox"]
+  border: none
+  padding: 0
+
+// Form layout - TODO - must be a better more stable way?
+
+label
+  display: block
+  vertical-align: top
+  line-height: 100%
+  margin-bottom: .65em
+
+@mixin inline-label($label-width: 25%, $input-width: 75%)
+  label
+    display: inline-block
+    width: $label-width
+    text-align: right
+    line-height: 40px
+    margin-right: -5px
+    margin-bottom: 0
+    padding-right: $base
+    + *
+      display: inline-block
+      width: $input-width
+      padding-left: 2%
+
+form
+  fieldset
+    border: 0
+    padding: 0
+    div
+      @extend .cf !optional
+      span
+        display: block
+        float: left
+        &:last-child
+          padding: 0 !important
+  &.inline-label
+    @include inline-label
+
+  .form-group
+    margin-bottom: $base*3
+    input + *
+      margin-top: $base
+      margin-bottom: -$base
+      padding-left: .9em
+
+  .form-group__half
+    @extend .form-group
+    label + *,
+    label + * + *
+      width: 50%
+      display: inline-block
+      padding-left: 2%
+      margin-left: -5px
+    label + *
+      margin-left: 0
+      padding-left: 0
+
+form.inline-label .form-group__half
+  @extend .form-group
+  label + *,
+  label + * + *
+    width: 37.5%
+    display: inline-block
+    padding-left: 2%
+    margin-left: -5px
+  label + *
+    margin-left: 0
+
+input, textarea
+  @extend .input
+
+textarea
+  height: 200px
+  @media #{$phone}
+    height: 120px
+
+select
+
+  //size variables
+  @mixin large($large-padding: 15px 20px)
+    padding: $large-padding
+
+$placeholder:         $gray
+$placeholder-opacity: .7
+$placeholder-lineheight: 18px
+
+::-webkit-input-placeholder
+  color: $placeholder
+  opacity: $placeholder-opacity
+  line-height: $placeholder-lineheight
+\:-moz-placeholder
+  color: $placeholder
+  opacity: $placeholder-opacity
+  line-height: $placeholder-lineheight
+::-moz-placeholder
+  color: $placeholder
+  opacity: $placeholder-opacity
+  line-height: $placeholder-lineheight
+\:-ms-input-placeholder
+  color: $placeholder
+  opacity: $placeholder-opacity
+  line-height: $placeholder-lineheight
+
+// Checkbox and radio
+
+.radio,
+.checkbox
+  vertical-align: baseline
+  padding-left: 0
+  margin-right: $base*2
+
+input,
+.radio input,
+.checkbox input
+  &[type="radio"],
+  &[type="checkbox"]
+    float: none
+    margin-left: 0
+    margin-right: $base
+    height: auto
+    box-shadow: none
+    vertical-align: baseline
+
+input[type="checkbox"],
+input[type="radio"]
+  height: 30px
+
+.help-block,
+.help-inline
+  color: $text

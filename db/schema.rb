@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(version: 20150117175126) do
 
   create_table "practices", force: :cascade do |t|
+    t.integer  "user_id"
     t.integer  "total_shot_count"
     t.integer  "total_hit_count"
     t.integer  "total_miss_count"
@@ -22,21 +23,23 @@ ActiveRecord::Schema.define(version: 20150117175126) do
   end
 
   create_table "shots", force: :cascade do |t|
-    t.integer  "game_id"
+    t.integer  "user_id"
+    t.integer  "practice_id"
     t.integer  "turn_id"
     t.integer  "aiming_for"
     t.integer  "hit"
     t.float    "hit_x"
     t.float    "hit_y"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "turns", force: :cascade do |t|
-    t.integer  "game_id"
+    t.integer  "practice_id"
+    t.integer  "user_id"
     t.integer  "aiming_for"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|

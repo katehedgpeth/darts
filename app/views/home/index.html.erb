@@ -1,2 +1,32 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="container">
+	<h1 class="welcome">Welcome Back, <%= $name %>!</h1>
+	<div class="metrics">
+		<div class="metric-row">
+			<div id="hit-pct" class="metric">
+				<h2><%= @hit_pct %></h2>
+				<p>Hit Percentage</p>
+			</div>
+			<div id="total-thrown" class="metric">
+				<h2><%= @total_shots %></h2>
+				<p>Total Darts Thrown</p>
+			</div>
+		</div>
+		<div class="metric-row">
+			<div id="best-shot" class="metric">
+				<h2><%= @best_shot %></h2>
+				<p>Your Best Shot</p>
+			</div>
+			<div id="worst-shot" class="metric">
+				<h2><%= @worst_shot %></h2>
+				<p>Your Worst Shot</p>
+			</div>
+		</div>
+	</div>
+	<div class="buttons">
+		<h1 class="practice"><a href="practice#index" class="btn">Start a Practice Session</a></h1>
+	</div>
+
+
+
+
+</div>

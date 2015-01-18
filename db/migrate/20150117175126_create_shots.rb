@@ -1,7 +1,8 @@
 class CreateShots < ActiveRecord::Migration
   def change
     create_table :shots do |t|
-	    t.integer :game_id
+	    t.integer :user_id
+	    t.integer :practice_id
 	    t.integer :turn_id
 	    t.integer :aiming_for
 	    t.integer :hit

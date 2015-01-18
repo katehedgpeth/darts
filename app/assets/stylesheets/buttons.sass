@@ -1,0 +1,185 @@
+/* Buttons ------------------------------ */
+
+@import "var"
+@import "mix"
+
+$buttonMod:           .9em
+$buttonMod_large:     $buttonMod + .3em
+$buttonMod_small:     $buttonMod - .3em
+
+$buttonPadding:       $buttonMod $buttonMod * 2
+$buttonPadding_large: $buttonMod_large - .2em $buttonMod_large * 2
+$buttonPadding_small: $buttonMod_small - .1em $buttonMod_small * 2
+
+$buttonRound:         $buttonMod*3
+$buttonRound_large:   $buttonMod_large*3
+$buttonRound_small:   $buttonMod_small*3 + .2em
+
+$buttonText:          $buttonMod
+$buttonText_large:    $buttonMod_large
+$buttonText_small:    $buttonMod_small + .2em
+
+$buttonShadow:   inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.1)
+
+@mixin button_regular()
+  padding: $buttonPadding
+  font-size: $buttonText
+
+@mixin button_large()
+  padding: $buttonPadding_large
+  font-size: $buttonText_large
+
+@mixin button_small()
+  padding: $buttonPadding_small
+  font-size: $buttonText_small
+
+@mixin button_round_regular()
+  @include button_regular
+  @include vendor(border-radius, $buttonRound)
+
+@mixin button_round_large()
+  @include button_large
+  @include vendor(border-radius, $buttonRound_large)
+
+@mixin button_round_small()
+  @include button_small
+  @include vendor(border-radius, $buttonRound_small)
+
+@mixin button()
+  @include font($avenir, normal, 300)
+  @include transition
+  @include radius
+  @include button_regular
+  cursor:        pointer
+  display:       inline-block
+  margin:        0 $base 0 0
+  top:           0px
+  width:         auto
+  background:    lighten($black, 10%)
+  border:        1px solid transparent
+  color:         #fff
+  text:
+    align:       center
+    decoration:  none
+    shadow:      none
+  font-weight:   500
+  line-height:   100%
+  box-shadow:    none
+  &::after
+    display:     none
+  &:hover,
+  &:focus
+    @include vendor(transform, translate(0, 0))
+    text-decoration: none
+
+@mixin button_color ($button-color, $button-color_hover, $text-color)
+  @include button()
+  background:    $button-color
+  border-color:  darken($button-color, 10%)
+  color:         $text-color
+  box-shadow:    $buttonShadow
+  &:hover
+    background:  lighten($button-color, 5%)
+    color:       $text-color
+    border-color: darken($button-color, 10%)
+  &:active
+    background:  $button-color
+
+@mixin button-outline_color ($button-color, $button-color_hover, $text-color)
+  @include button()
+  @include vendor(border-radius, 4px)
+  background:    #fff
+  background:    rgba(255,255,255,.75)
+  color:         $text-color
+  border:        1px solid $button-color
+  &:hover
+    background:  #fff
+    background:  rgba(255,255,255,1)
+    border-color: darken($button-color, 5%)
+    color:       $button-color_hover
+  &:active
+    color:       $button-color_hover
+
+// Button types
+.button,
+.btn-primary,
+.btn.btn-primary,
+button,
+input[type="submit"]
+  @include button_color($blue, lighten($blue, 10%), #fff)
+
+
+.button_neutral,
+  @include button-outline_color(#fff, $blue, lighten($blue, 10%))
+
+.button-outline,
+.btn,
+input[type="submit"].button-outline
+  @include button-outline_color($lightGray, $blue, #666)
+  &:active
+    box-shadow: none
+  &.active
+    box-shadow: none
+    background: #ededed
+    color: $black
+  .caret
+    margin-left: $base
+    margin-right: -$base
+
+.button-outline_dark,
+input[type="submit"].button-outline_dark
+  $button-dark-color: $gray
+  @include button-outline_color($button-dark-color, $black, #fff)
+
+.btn-danger
+  @include button_color($red, lighten($red1, 10%), #fff)
+
+// Button modifiers
+.button-size__small,
+.btn-small,
+.btn-mini,
+.btn.btn-small
+  @include button_small
+  .caret
+    margin-top: 5px
+
+.button-size__large
+  @include button_large
+
+.button__round
+  @include button_round_regular
+
+.button-size__large-round
+  @include button_large
+  @include button_round_large
+
+.button-size__small-round
+  @include button_small
+  @include button_round_small
+
+// Button set
+
+.button-set__right
+  text-align: right
+
+.button-set__center
+  text-align: center
+
+// Button group (pill)
+
+.btn-group .btn
+  margin-right: 0
+  @include button_small
+  font-size: 14px
+
+.btn-group.open
+  .btn.dropdown-toggle
+    background: $lightestGray
+    box-shadow: none
+    &.btn-primary
+      background: $blue
+    &.btn-danger
+      background: $red1
+
+.btn-row.row-fluid
+  margin-bottom: $base*3

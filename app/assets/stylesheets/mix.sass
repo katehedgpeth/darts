@@ -1,0 +1,168 @@
+/* Mixins and extends =========================*/
+// Vendor Mixins and defaults
+
+@import "var"
+
+@mixin vendor($property: transition, $values: all .2s ease-in-out)
+  -webkit-#{$property}: $values
+  -moz-#{$property}:    $values
+  -ms-#{$property}:     $values
+  -o-#{$property}:      $values
+  #{$property}:         $values
+
+@mixin transition
+  @include vendor(transition, all .4s ease-in-out)
+.transition
+  @include transition
+
+@mixin box_shadow
+  @include vendor(box-shadow, $shadow)
+.box_shadow
+  @include box_shadow
+
+@mixin box_shadow_inset
+  @include vendor(box-shadow, inset $shadow)
+.box_shadow_inset
+  @include box_shadow_inset
+
+@mixin radius
+  @include vendor(border-radius, 4px)
+.radius
+  @include radius()
+
+// Gradient
+@mixin linear-gradient($fromColor, $toColor)
+  //background-color: $toColor /* Fallback Color */
+  background-image: -webkit-gradient(linear, top left, bottom right, 40%($fromColor), 75%($toColor)) /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $fromColor, $toColor) /* Chrome 10+, Saf5.1+, iOS 5+ */
+  background-image:    -moz-linear-gradient(top, $fromColor, $toColor) /* FF3.6 */
+  background-image:     -ms-linear-gradient(top, $fromColor, $toColor) /* IE10 */
+  background-image:      -o-linear-gradient(top, $fromColor, $toColor) /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $fromColor, $toColor)
+  -pie-background:          linear-gradient(top, $fromColor, $toColor) /*PIE*/
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$fromColor}', EndColorStr='#{$toColor}')
+
+
+// Margin Fixes
+
+@mixin first-child
+  margin-left:        0
+  padding-right:      0
+.first-child
+  @include first-child
+
+@mixin last-child
+  margin-right:       0
+  padding-right:      0
+.last-child
+  @include last-child
+
+@mixin middle-child
+  color: red
+.middle-child
+  @include middle-child
+
+@mixin center
+  margin:             0 auto
+  display:            block
+
+@mixin cf
+  &:before, &:after
+    content:     ""
+    display:     table
+  &:after
+    clear:       both
+    *zoom:         1
+
+@mixin background_fill($path)
+  background-image: url($path)
+  background-size: cover
+  background-repeat: no-repeat
+  background-color: #ffffff
+  background-position: center
+  behavior: url(/backgroundsize.min.htc)
+
+@mixin absolute_fill
+  position: absolute
+  top: 0
+  left: 0
+  height: 100%
+  width: 100%
+  display: block
+
+@mixin psuedo_fill
+  content: " "
+  @include absolute_fill
+
+// Containers
+
+@mixin border-box
+  border: 1px solid $lightGray
+  @include vendor(border-radius, 4px)
+  behavior: url(/PIE.htc)
+  padding: $padding
+
+@mixin image--circle($size: 90px)
+  height: $size
+  width: $size
+  @include vendor(border-radius, 50%)
+  behavior: url(/PIE.htc)
+  overflow: hidden
+  img
+    max-height: 100%
+    min-width: 100%
+
+@mixin image--circle__border($size: 90px, $color: $blue)
+  .image--circle__border--container
+    @include image--circle($size)
+  &::before
+    @include psuedo_fill
+    @include vendor(border-radius, 50%)
+    behavior: url(/PIE.htc)
+    height: $size + 6px
+    width: $size + 6px
+    top: -4px
+    left: -4px
+    border: 1px solid $color
+
+// Fonts
+@mixin font($font, $style: normal, $weight: normal)
+  font:
+    family: $font, times, sans-serif
+    style:  $style
+    weight: $weight
+
+// Gradients
+@mixin gradient_white_overlay__bottom
+  background: -moz-linear-gradient(top,  rgba(255,255,255,0.6) 0%, rgba(255,255,255,1) 100%) /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.7)), color-stop(100%,rgba(255,255,255,1))) /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,1) 100%) /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,1) 100%) /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,1) 100%) /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,0.6) 0%,rgba(255,255,255,1) 100%) /* W3C */
+  -pie-background: inear-gradient(top, rgba(255,255,255,0.6)0%,rgba(255,255,255,1) 100%) /*PIE*/
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3ffffff', endColorstr='#ffffff',GradientType=0 ) /* IE6-9 */
+  behavior: url(/PIE.htc)
+
+@mixin gradient_white_overlay__top()
+  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 100%) /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0.7))) /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%) /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%) /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%) /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 100%) /* W3C */
+  -pie-background: inear-gradient(top, rgba(255,255,255,1)0%,rgba(255,255,255,0.7) 100%) /*PIE*/
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#b3ffffff',GradientType=0 ) /* IE6-9 */
+  behavior: url(/PIE.htc)
+
+@mixin gradient_diagonal($top-left, $bottom-right)
+  background: $top-left /* Old browsers */
+  background: -moz-linear-gradient(-45deg,  $top-left 0%, $bottom-right 100%) /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,$top-left), color-stop(100%,$bottom-right)) /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  $top-left 0%,$bottom-right 100%) /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  $top-left 0%,$bottom-right 100%) /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  $top-left 0%,$bottom-right 100%) /* IE10+ */
+  background: linear-gradient(135deg,  $top-left 0%,$bottom-right 100%) /* W3C */
+  -pie-background: inear-gradient(top, $top-left 0%,$bottom-right 100%) /*PIE*/
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$top-left', endColorstr='$bottom-right',GradientType=1 ) /* IE6-9 fallback on horizontal gradient */
+  behavior: url(/PIE.htc)
