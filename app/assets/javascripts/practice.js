@@ -86,8 +86,6 @@ $(function(){
 		return "translate("+ radius +", "+ radius +")"
 	});
 
-	g.append("circle").attr("r", 6).attr("transform", "translate(0,0)").attr("id", "centerpoint")
-	
 
 
 	function drawSegment(radius, thisClass, color1, color2) {
@@ -148,7 +146,7 @@ $(function(){
 			})
 			.attr("class", function(){
 				if (i % 2 == 0) {
-					return thisClass + (i+1) +" "+ color1;
+					return thisClass + (i+1) +" "+ color1 + " segment";
 				} else { return thisClass + points +" "+ color2 + " segment"; }
 			})
 			
@@ -170,10 +168,37 @@ $(function(){
 	}
 	g.append("circle").attr("r", radius * .1).attr("class", "bull single green segment");
 	g.append("circle").attr("r", radius * .05).attr("class", "bull double red segment");
+
+
+	var hoverCircle = svg.append("circle").attr("r", 5).attr("id", "hoverCircle").attr("class", "hidden")
+
+	$("svg").mousemove(function(e){
+		tempX = e.pageX; 
+		tempY = e.pageY;
+		offset = $("svg").offset();
+		offsetX = tempX - offset.left - 5;
+		offsetY = tempY - offset.top - 5;
+		hoverCircle.attr("class", "");
+		$("#hoverCircle").attr("transform", function(){
+			return "translate("+ offsetX +","+ offsetY +")";
+		})
+	});
+	$("svg").mouseleave(function(e){
+		console.log("mouseleave");
+		hoverCircle.attr("class", "hidden")
+	});
 	
-	d3.selectAll(".segment").on("click", function(){
+	$(".segment").click(function(e){
 		console.log(this);
 		console.log("clicked " + this.className.baseVal);
+		tempX = e.pageX; 
+		tempY = e.pageY;
+		offset = $("svg").offset();
+		offsetX = tempX - offset.left - 5;
+		offsetY = tempY - offset.top - 5;
+		d3.select("svg").append("circle").attr("r", 5).attr("class", "shot-marker").attr("transform", function(){
+			return "translate("+ offsetX +","+ offsetY +")";			
+		});
 	});		
 	
 	g.attr("transform", "rotate(180) translate("+ -radius +","+ -radius +")")
