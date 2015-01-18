@@ -28,6 +28,6 @@ test:
 
 production:
   adapter: postgresql
-  database: my_datbase_production
+  database: DATABASE_URL
   pool: 5
   timeout: 5000
