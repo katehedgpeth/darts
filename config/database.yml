@@ -20,6 +20,14 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+# changing this so it will work on Heroku 
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
+
+
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  database: my_datbase_production
+  pool: 5
+  timeout: 5000
