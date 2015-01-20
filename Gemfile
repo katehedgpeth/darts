@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'd3_rails', '~> 3.5.3'
+gem 'font-awesome-rails', '~> 4.2.0.0'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

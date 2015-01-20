@@ -1,13 +1,48 @@
 @import 'var'
+@import font-awesome
 
 body
 	margin: 0
 
-#aiming-for
-	margin: 0 0 10px 0
-	background: $gray
-	text-align: center
+#header
+	position: fixed
+	display: flex
+	width: 100%
+	margin: 0 0 10px 0 
+	top: 0
 	
+
+#aiming-for
+	width: 50%
+	padding: 10px 0
+	color: #fff !important
+	background: $blue
+		
+	h2
+		color: #fff
+	.aim-header
+		margin: 0 0 0 20px
+		display: flex
+		span
+			text-transform: capitalize
+	
+	#aim-icon
+		margin: 0 20px 0 0
+		flex: 1
+		text-align: right
+	
+	.select-row
+		display: flex
+		margin: 0
+		h2
+			margin: auto
+			text-align: center
+			flex: 1
+			font-size: 1em
+
+	.selected-num
+		background: #fff
+		color: $blue
 
 #board
 	width: 100%
@@ -22,16 +57,25 @@ svg
 	rect
 		fill: $blue
 		
-	text
+	.no-hit text
 		fill: #fff
+		text-anchor: middle
 	
 	path, circle
 		stroke: black
 		stroke-width: 2
 		
+	.number text
+		fill: #fff
+		font-size: 1.7em
+		text-anchor: middle
+		
 	#hoverCircle
 		fill: $orange
 		stroke: none
+	
+	.aiming-for
+		fill: yellow !important
 	
 	.shot-marker
 		fill: purple

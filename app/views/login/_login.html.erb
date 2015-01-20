@@ -1,0 +1,22 @@
+<%= javascript_include_tag params[:controller] %>
+<%= stylesheet_link_tag params[:controller] %>
+
+
+<div class="sign-in-form">
+	<h1></h1>
+		<h1>
+			<%= link_to "Kate", login_index_path(id: "3"), { class: "btn-primary", method: "post" } %>
+		</h1>
+		<h1>
+			<%= link_to "Brett", login_index_path(id: "4"), { class: "btn-primary", method: "post" } %>
+		</h1>
+		<h1>
+			<%= link_to "Test", login_index_path(id: "5"), { class: "btn-primary", method: "post" } %>
+		</h1>
+<!--
+		<input type="text" id="email" placeholder="email" />
+		<input type="password" id="password" placeholder="password" />
+		<button type="submit" id="sign-in">Sign In</button>
+		<button type="submit" id="create-account">Create an Account</button>
+-->
+</div>

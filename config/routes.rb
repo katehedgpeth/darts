@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
-	root 'home#index'
+	root 'login#index'
 	resources :test, :home, :around, :practice, :login, :account
+	
+ 	post 'login', to: 'login#create'
+ 	delete 'login', to: 'login#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
