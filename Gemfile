@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'd3_rails', '~> 3.5.3'
 gem 'font-awesome-rails', '~> 4.2.0.0'
+gem 'highcharts-rails', '~> 4.0.4.1'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

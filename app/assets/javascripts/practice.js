@@ -1,7 +1,11 @@
+
+
 $(function(){
-	
+
+$.get("practice#index", function(data){ doEverything(data) }, "JSON");
+
+function doEverything(json_data) {
 	var heightOffset = $("#aiming-for").height() + $("#shots").height() + $("#progress").height() + 80;
-	console.log(heightOffset);
 	var pageHeight = $(window).height() - heightOffset;
 	var pageWidth = $("body").width();
 		
@@ -16,7 +20,62 @@ $(function(){
 	$(".shots").css("margin-top", $("#header").height() + 20);
 //	$("#aiming-for").append("<h1>This goes in the aiming section</h1>");
 
+//	$("#session-hits").html(json_data.total_hits);
+//	$("#session-misses").html(json_data.total_misses);
 
+//	var parsed = JSON.parse(json_data);
+	var missesByTurn = json_data["turns"].map(function(d,i){
+		return d["misses"];
+	});
+	var hitsByTurn = json_data["turns"].map(function(d,i){
+		return d["hits"];
+	})
+	console.log(hitsByTurn);
+
+	Highcharts.setOptions({
+		chart: {
+			type: 'line'
+		},
+		plotOptions: {
+			 line: {
+			 	lineWidth: 2,
+			 	color:'rgba(0,51,96,.75)',
+			 	marker: { enabled: false },
+			 },
+			series: {
+				color: '#000'
+			}
+		},
+		xAxis: {
+			title: { text: '' },
+			lineWidth: 0,
+			tickLength: 0,
+			labels: { enabled: false }
+		},
+		yAxis: {
+			gridLineWidth:0,
+			title: { text: '' },
+			labels: { enabled: false }
+		},
+		tooltip: { enabled: false },
+		title: { text: '' },
+		legend: { enabled: false },
+		credits: { enabled: false },
+		exporting: { enabled: false },
+	});
+
+	var hits_sparkline = $("#hits-sparkline").highcharts({
+
+		chart: {
+			type: 'line',
+			height: 100
+		},
+		series: [{
+			name: "hits",
+			data: hitsByTurn
+		}]
+
+	});
 
 
 
@@ -105,7 +164,10 @@ $(function(){
 		arcOffsetY = getSideLength(chordLength, 9) * -1;
 	
 	
-
+		var multiple;
+		if (thisClass == "single") { multiple = 1 }
+		else if (thisClass == "double") { multiple = 2 }
+		else if (thisClass == "triple") { multiple = 3 }
 
 		var p1 = "0,4";
 		var p2x = 0
@@ -118,17 +180,21 @@ $(function(){
 		var direction = " 0,0 ";
 
 		segments.append("path")
-			.attr("d", "m"+ p1 + " l" + p2	+ " a"+ circleradius + rotate + direction + p3)
-			.attr("transform", function(){
-				return "rotate("+ ((-18 * i)+9)+")"
+			.attr({
+				d: "m"+ p1 + " l" + p2	+ " a"+ circleradius + rotate + direction + p3,
+				transform: function(){ return "rotate("+ ((-18 * i)+9)+")" },
+				class: function(){
+					if (i % 2 == 0) {
+						return thisClass + points +" "+ inOut +" any"+ points +" "+ color1 + " segment";
+					} else { 
+						return thisClass + points +" "+ inOut +" any"+ points +" "+ color2 + " segment"; 
+					}
+				},
+				"data-points": points,
+				"data-multiple": multiple,
+				"data-score": multiple * points,
+				"data-inout": function(){ if (inOut != "") { return inOut }}
 			})
-			.attr("class", function(){
-				if (i % 2 == 0) {
-					return thisClass + points +" "+ inOut +" any"+ points +" "+ color1 + " segment";
-				} else { return thisClass + points +" "+ inOut +" any"+ points +" "+ color2 + " segment"; }
-			});
-		
-			
 	}
 
 	var i = 0;
@@ -160,22 +226,37 @@ $(function(){
 		var evenSmall = "green"
 		var evenLarge = "white"
 		drawSegment(lessRadius, "double", "", oddSmall, evenSmall, points);
-		drawSegment(lessRadius * .93, "single", "outer", oddLarge, evenLarge, points);
+		drawSegment(lessRadius * .93, "single", "Outer", oddLarge, evenLarge, points);
 		drawSegment(lessRadius * .5, "triple", "", oddSmall, evenSmall, points);
-		drawSegment(lessRadius * .43, "single", "inner", oddLarge, evenLarge, points);
+		drawSegment(lessRadius * .43, "single", "Inner", oddLarge, evenLarge, points);
 		numbers.append("g")
-			.attr("class", "number")
-			.attr("height", radius)
-			.attr("transform", function(){ return "rotate("+ (180-(18 * i)) +")" })
+			.attr({
+				class: "number",
+				height: radius,
+				transform: function(){ 
+					return "rotate("+ (180 - (18 * i)) +")" },
+			})
 			.append("text")
 				.text(points).attr("transform", function(){
-					return "translate(0,"+ (-radius - 5) +")";
+					if ( i > 5 && i < 15 ) { upDown = 180; move = 22; } else { upDown = 0; move = 5; }
+					return "translate(0,"+ (-radius - move) +") rotate("+ upDown +")";
 				})
 		
 		i++;
 	}
-	segments.append("circle").attr("r", radius * .1).attr("class", "single21 any21 green segment");
-	segments.append("circle").attr("r", radius * .05).attr("class", "double21 any21 red segment");
+	segments.append("circle").attr({
+		r: radius * .1,
+		class: "single25 any25 green segment",
+		"data-points": 25,
+		"data-multiple": 1
+	});
+	segments.append("circle").attr({
+		r: radius * .05,
+		class: "double25 any25 red segment",
+		"data-points": 25,
+		"data-multiple": 2
+
+	});
 
 	var shots = svg.append("g").attr("class", "shots")
 
@@ -216,104 +297,109 @@ $(function(){
 	});
 
 	var shotCounter = 0;
-	var hit, new_turn, thisClass, thisSeg, thisNum, thisNumInt, originalColor;
-	var aiming_for = "triple20"
-	var inOut = "";
-	var inOutString = "";
-	d3.select("svg ."+ aiming_for).classed("aiming-for", true);
+	var aimingInOutString = "";
+	var aimingInOutClass = "";
+	var aiming_for = "any20";
+	var aimingPoints = 20;
+	var aimingMultiple = 0;
+	var aimingMultipleString = "Any";
+	var aimingInOut = ""
+	var aimingInOutClass = ""
+	var hit = 0;
+	var new_turn, originalColor,  hitClass, hitPoints, hitMultiple, hitMultipleString, hitInOut;
+	d3.selectAll("svg ."+ aiming_for).classed("aiming-for", true);
 
 	$(".select-row h2").click(function(e){
 		selectionState = 0;
-		thisClass = e.toElement.classList;
-		if (thisClass[0].substring(0,3) == "any") {
-			thisSeg = "any";
-			thisNum = thisClass[0].substring(3,5);
-		} else {
-			thisSeg = thisClass[0].substring(0,6);
-			thisNum = thisClass[0].substring(6,8);			
-		}
-		if (thisClass.length == 2 && thisClass[1] != "any") {
-			inOut = thisClass[1] +" ";
-			inOutString = "." + inOut;
-		}
+		aimingPoints = parseInt($(this).attr("data-points"));
+		aimingMultiple = parseInt($(this).attr("data-multiple"));
+		if (aimingMultiple == 0) { aimingMultipleString = "Any" }
+		else if (aimingMultiple == 1) { aimingMultipleString = "Single" }
+		else if (aimingMultiple == 2) { aimingMultipleString = "Double" }
+		else if (aimingMultiple == 3) { aimingMultipleString = "Triple" }
+		aimingInOut = $(this).attr("data-inout");
+		aimingInOutClass = "."+ aimingInOut;
+		if (aimingInOut == undefined) { aimingInOut = ""; aimingInOutClass = ""}
+
 		$(".selected-num").removeClass("selected-num");
 		$(this).addClass("selected-num");
 		$("#aim-number span").html(function(i,d){
-			if (thisNum == "21") { numString = "Bull" } else { numString = thisNum }
-			return inOut + thisSeg +" "+ numString
+			if (aimingPoints == 25) { aimingNumString = "Bull" } else { aimingNumString = aimingPoints }
+			return aimingInOut + aimingMultipleString +" "+ aimingNumString
 		});
-		if (inOut != "") { inOutSt = "."+ inOut }
-		aiming_for = thisSeg + thisNum + inOutString;
+		aiming_for = aimingMultipleString.toLowerCase() + aimingPoints + aimingInOutClass;
 		d3.selectAll("svg .aiming-for").classed("aiming-for", false);
 		d3.selectAll("svg ."+ aiming_for).classed("aiming-for", true);
-		console.log(aiming_for);
 		$(".number-select").slideUp(500);
 	});
 
-
 	function logClick(click){
+		click = click.toElement;
+		hitPoints = $(click).attr("data-points");
 
+		hitMultiple = parseInt($(click).attr("data-multiple"));
+		if (hitMultiple == 1) { hitMultipleString = "Single" }
+		else if (hitMultiple == 2) { hitMultipleString = "Double" }
+		else if (hitMultiple == 3) { hitMultipleString = "Triple" }
+		hitInOut = $(click).attr("data-inout");
+		if (hitInOut == undefined) { hitInOut = "" }
+		if (hitPoints == aimingPoints) {
+			if (aimingMultiple == 0 || aimingMultiple == hitMultiple) { hit = 1; }
+		} else { 
+			hit = 0
+		}
+		shotCounter++;
+		shot = shotCounter % 3
+		if ( shot == 0 ) { 
+			shot = 3;
+			new_turn = true;
+		} else { new_turn = false}
+
+		if (shot == 1 && shotCounter > 1) {
+			$("div.shot2 h1").fadeTo(100, 0.0, function(){
+				$(this).html("--").fadeTo(100, 1.0);
+			});
+			$("div.shot3 h1").fadeTo(100, 0.0, function(){
+				$(this).html("--").fadeTo(100, 1.0);
+			});
+			$(".shot-marker").remove();
+		}
+
+		$(".shot"+ shot +" h1").html(function(){
+//			if (hitPoints == 25) { hitPoints = "Bull"}
+			return hitMultipleString.substring(0,1) + hitPoints
+		});
 		shots.append("circle").attr("r", 5).attr("class", "shot-marker").attr("transform", function(){
 			return "translate("+ offsetX +","+ offsetY +")";			
 		});
-		thisClass = click.toElement.className.baseVal;
-		thisSeg = thisClass.substring(0,1);
-		thisSegString = thisClass.substring(0,6);
-		thisNum = thisClass.substring(6,8);
-		thisNumInt;
-		if (thisNum == " b"){
-			thisNum = thisClass.substring(7,8);
-			thisNumInt = 21;
-		} else if (thisSeg == "" ) {
-			thisSeg = "None";
-			thisNum = "";
-			thisNumInt = 0;
-		} else { thisNumInt = parseInt(thisNum); }
-		$(".shot"+ (shotCounter + 1) +" h1").html(function(){
-			return thisSeg + thisNum;
-		});
-		
-		
-		if ((inOut + thisSeg + thisNumInt) == aiming_for) {
-			hit = 1
-		} else { hit = 0 }
 
-		shotCounter++;
-		
-		if (shotCounter == 3) {
-			shotCounter = 0;
-			new_turn = true;
-		} else { new_turn = false; }
 	}
 
-	function postClick(){
-		console.log(aiming_for, hit, thisNumInt, inOut + thisSegString)
-		$.post( "practice#index", {
+	function postClick(event){
+		event.preventDefault();
+		$.post( "practice#create", {
 //			user_id:				,
 //			practice_id:			,
 //			turn_id:				,
 			aiming_for:				aiming_for,
 			hit:					hit,
-			hit_number:				thisNumInt,
-			hit_section:			inOut + thisSegString,
+			hit_number:				hitPoints,
+			hit_section:			hitInOut + hitMultipleString,
 			hit_x:					offsetX, 
  			hit_y:					offsetY,
  			new_turn:				new_turn
-		}, function(){
-			if (new_turn == true) {
-				$("div[class *= 'shot'] h1").delay(500).fadeTo(250, 0.0, function(){
-					$(this).html("--").fadeTo(250, 1.0);
-					$(".shots circle").fadeOut(250).remove();
-				});
-				
-			}
+		}, function(data) {
+			event.preventDefault();
+			$("#session-hits").html(data.total_hits);
+			$("#session-misses").html(data.total_misses);
+			accuracy = (data.total_hits / (data.total_misses + data.total_hits)) * 100;
+			accuracy = accuracy.toFixed(2);
+			$("#session-accuracy").html(accuracy + "%");
+			chart = hits_sparkline.highcharts()
+			chart.series[0].addPoint(data.total_hits);
+			chart.update();
 		});
-		$.get( "practice#index", function(data) {
-			session_data = data;
-			console.log(data);
-		})
 	}
-
 
 	$(".segment").mousemove(function(e){
 		tempX = e.pageX; 
@@ -343,7 +429,6 @@ $(function(){
 //		}
 	});
 	$(".segment").click(function(e){ 
-		console.log("click");
 			logClick(e); 		
 			postClick(e);
 	});
@@ -354,7 +439,7 @@ $(function(){
 		}
 	});
 	    
-
+}
 
 });
 

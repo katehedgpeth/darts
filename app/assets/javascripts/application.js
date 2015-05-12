@@ -16,3 +16,8 @@
 
 
 //= require d3
+//= require jcanvas
+//= require highcharts
+//= require highcharts/highcharts-more 		
+// to get the new features in 2.3.0
+//= require highcharts/modules/heatmap

@@ -1,10 +1,18 @@
 class PracticeController < ApplicationController
 # http://www.gotealeaf.com/blog/the-detailed-guide-on-how-ajax-works-with-ruby-on-rails
 # 	respond_to :html, :js
+		@@thisPractice ||= Practice.create		
+		@@practice_id ||= @@thisPractice.id
+		@@thisTurn ||= Turn.create
+		@@turn_id ||= @@thisTurn.id
+		@@hits = 0
+		@@misses = 0
 
-		newPractice ||= Practice.create		
-		@@practice_id ||= newPractice.id
-
+		@@turn_data = {
+			"total_hits" => 0,
+			"total_misses" => 0,
+			"turns" => []
+		}
 
 	def new
 		newPractice.user_id = @@user.id
@@ -13,31 +21,26 @@ class PracticeController < ApplicationController
 	end	
 
 	def index
-		@@user = User.includes(:shots, :practices).find(session[:current_user_id])
-
-		newTurn = Turn.create
-		@@turn_id = newTurn.id
-		newTurn.user_id = @@user.id
-		newTurn.save
 		
-		@session_hits = @@user.shots.where("hit = ? AND practice_id = ?", 1, @@practice_id).count
-		@session_misses = @@user.shots.where("hit = ? AND practice_id = ?", 0, @@practice_id).count
-		if @session_hits > 0
-			@session_accuracy = @session_hits / (@session_hits + @session_misses)
-		else @session_accuracy = 0
+		@@session_turns = Turn.where("practice_id = ?", @@practice_id)
+		@@session_turns.each do |thisTurn|
+			puts "thisTurn = #{thisTurns}"
+			@@turn_data["turns"] << { 
+				"id" => thisTurn.id,
+				"hits" => thisTurn.hits,
+				"misses" => thisTurn.misses
+			}
 		end
-
-		@session_data = [{
-			"session_hits" => @session_hits,
-			"session_misses" => @session_misses,
-			"session_accuracy" => @session_accuracy 
-		}]
- 		
-		
+		puts "practice_id = #{@@practice_id}"
+		puts "turn_data = #{@@turn_data}"
+		@@user = User.includes(:shots, :practices, :turns).find(session[:current_user_id])
 		respond_to do |format|
-			format.json { render :json => @session_data }
 			format.html
+			format.json { render :json => @@turn_data }
 		end		
+
+
+
 		
 	end
 
@@ -46,27 +49,64 @@ class PracticeController < ApplicationController
 	end
 
 	def create
-		puts "this is a post request"
 		shot = 	Shot.new
 		shot.user_id = @@user.id
 		shot.practice_id = @@practice_id
 		shot.turn_id = @@turn_id
 		shot.aiming_for = params[:aiming_for]
-		shot.hit = params[:hit]
-		shot.hit_number = params[:hit_number]
+		shot.hit = params[:hit].to_i
+		shot.hit_number = params[:hit_number].to_i
 		shot.hit_section = params[:hit_section]
-		shot.hit_x = params[:hit_x]
-		shot.hit_y = params[:hit_y]
+		shot.hit_x = params[:hit_x].to_i
+		shot.hit_y = params[:hit_y].to_i
  		shot.save
+
+		
+		turn = Turn.find(@@turn_id)
+		if params[:hit] == "1"
+			puts "this should be recorded as a hit"
+			puts @@turn_data["total_hits"]
+			@@turn_data["total_hits"] += 1
+			@@turn_data["turns"].each do |t|
+				if t["id"] == @@turn_id
+					t["hits"] +=1
+				end
+			end
+			turn.hits += 1
+			turn.save
+		else
+			puts "this should be recorded as a miss"
+			@@turn_data["total_misses"] += 1
+			@@turn_data["turns"].each do |t|
+				if t["id"] == @@turn_id
+					t["misses"] +=1
+				end
+			end
+			turn.misses += 1
+			turn.save
+		end
+
+
+		# @@turn_data[@@turn_id] = {
+			# "hits" => Turn.find(@@turn_id).hits,
+			# "misses" => Turn.find(@@turn_id).misses
+		# }
+
 		if params[:new_turn] == "true"
  			newTurn = Turn.create
  			@@turn_id = newTurn.id
- 			puts "turn_id = #{@@turn_id}"
- 		else
- 			puts "still the same turn, ##{@@turn_id}"
+ 			@@turn_data["turns"] << {
+ 				"id" => @@turn_id,
+ 				"hits" => 0, 
+ 				"misses" => 0
+ 			}
 		end	
-		
-		puts "user_id = #{@@user.id}"
+
+ 		
+		# respond_with		
+		respond_to do |format|
+			format.json { render :json => @@turn_data }
+		end		
 		
 	end
 end

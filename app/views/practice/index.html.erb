@@ -1,39 +1,32 @@
-<%= javascript_include_tag params[:controller] %>
-<%= stylesheet_link_tag params[:controller] %>
 
 <div id="header">
 	<div class="spacer"></div>
 	<div id="aiming-for">
 		<div class="aim-header">
 			<h2 id="aim-number">
-				Aiming for <span>Triple 20</span>
+				Aiming for <span>Any 20</span>
 			<h2>
 			<h2 id="aim-icon">
 				<i class="fa fa-angle-double-down"></i>
 			</h2>
 		</div>
 		<div class="number-select hidden">
-			<div class="select-row">	<h2 class="any21">Any Bull</h2>		<h2 class="double21">DBull</h2>					<h2 class="single21">SBull</h2>		<h2></h2>			<h2></h2>									<h2 ></h2>								</div>
-			<div class="select-row">	<h2 class="any20">Any 20</h2>		<h2 class="triple20 selected-num">T20</h2>		<h2 class="double20">D20</h2>		<h2 class="single20 any">S20</h2>			<h2 class="single20 inner">inS20</h2>		<h2 class="single20 outer">ouS20</h2>	</div>
-			<div class="select-row">	<h2 class="any19">Any 19</h2>		<h2 class="triple19">T19</h2>					<h2 class="double19">D19</h2>		<h2 class="single19 any">S19</h2>			<h2 class="single19 inner">inS19</h2>		<h2 class="single19 outer">ouS19</h2>	</div>
-			<div class="select-row">	<h2 class="any18">Any 18</h2>		<h2 class="triple18">T18</h2>					<h2 class="double18">D18</h2>		<h2 class="single18 any">S18</h2>			<h2 class="single18 inner">inS18</h2>		<h2 class="single18 outer">ouS18</h2>	</div>
-			<div class="select-row">	<h2 class="any17">Any 17</h2>		<h2 class="triple17">T17</h2>					<h2 class="double17">D17</h2>		<h2 class="single17 any">S17</h2>			<h2 class="single17 inner">inS17</h2>		<h2 class="single17 outer">ouS17</h2>	</div>
-			<div class="select-row">	<h2 class="any16">Any 16</h2>		<h2 class="triple16">T16</h2>					<h2 class="double16">D16</h2>		<h2 class="single16 any">S16</h2>			<h2 class="single16 inner">inS16</h2>		<h2 class="single16 outer">ouS16</h2>	</div>
-			<div class="select-row">	<h2 class="any15">Any 15</h2>		<h2 class="triple15">T15</h2>					<h2 class="double15">D15</h2>		<h2 class="single15 any">S15</h2>			<h2 class="single15 inner">inS15</h2>		<h2 class="single15 outer">ouS15</h2>	</div>
-			<div class="select-row">	<h2 class="any14">Any 14</h2>		<h2 class="triple14">T14</h2>					<h2 class="double14">D14</h2>		<h2 class="single14 any">S14</h2>			<h2 class="single14 inner">inS14</h2>		<h2 class="single14 outer">ouS14</h2>	</div>
-			<div class="select-row">	<h2 class="any13">Any 13</h2>		<h2 class="triple13">T13</h2>					<h2 class="double13">D13</h2>		<h2 class="single13 any">S13</h2>			<h2 class="single13 inner">inS13</h2>		<h2 class="single13 outer">ouS13</h2>	</div>
-			<div class="select-row">	<h2 class="any12">Any 12</h2>		<h2 class="triple12">T12</h2>					<h2 class="double12">D12</h2>		<h2 class="single12 any">S12</h2>			<h2 class="single12 inner">inS12</h2>		<h2 class="single12 outer">ouS12</h2>	</div>
-			<div class="select-row">	<h2 class="any11">Any 11</h2>		<h2 class="triple11">T11</h2>					<h2 class="double11">D11</h2>		<h2 class="single11 any">S11</h2>			<h2 class="single11 inner">inS11</h2>		<h2 class="single11 outer">ouS11</h2>	</div>
-			<div class="select-row">	<h2 class="any10">Any 10</h2>		<h2 class="triple10">T10</h2>					<h2 class="double10">D10</h2>		<h2 class="single10 any">S10</h2>			<h2 class="single10 inner">inS10</h2>		<h2 class="single10 outer">ouS10</h2>	</div>
-			<div class="select-row">	<h2 class="any9">Any 9 </h2>		<h2 class="triple9">T9</h2>						<h2 class="double9">D9</h2>			<h2 class="single9 any">S9</h2>			<h2 class="single9 inner">inS9</h2>			<h2 class="single9 outer">ouS9</h2>	</div>
-			<div class="select-row">	<h2 class="any8">Any 8 </h2>		<h2 class="triple8">T8</h2>						<h2 class="double8">D8</h2>			<h2 class="single8 any">S8</h2>			<h2 class="single8 inner">inS8</h2>			<h2 class="single8 outer">ouS8</h2>	</div>
-			<div class="select-row">	<h2 class="any7">Any 7 </h2>		<h2 class="triple7">T7</h2>						<h2 class="double7">D7</h2>			<h2 class="single7 any">S7</h2>			<h2 class="single7 inner">inS7</h2>			<h2 class="single7 outer">ouS7</h2>	</div>
-			<div class="select-row">	<h2 class="any6">Any 6 </h2>		<h2 class="triple6">T6</h2>						<h2 class="double6">D6</h2>			<h2 class="single6 any">S6</h2>			<h2 class="single6 inner">inS6</h2>			<h2 class="single6 outer">ouS6</h2>	</div>
-			<div class="select-row">	<h2 class="any5">Any 5 </h2>		<h2 class="triple5">T5</h2>						<h2 class="double5">D5</h2>			<h2 class="single5 any">S5</h2>			<h2 class="single5 inner">inS5</h2>			<h2 class="single5 outer">ouS5</h2>	</div>
-			<div class="select-row">	<h2 class="any4">Any 4 </h2>		<h2 class="triple4">T4</h2>						<h2 class="double4">D4</h2>			<h2 class="single4 any">S4</h2>			<h2 class="single4 inner">inS4</h2>			<h2 class="single4 outer">ouS4</h2>	</div>
-			<div class="select-row">	<h2 class="any3">Any 3 </h2>		<h2 class="triple3">T3</h2>						<h2 class="double3">D3</h2>			<h2 class="single3 any">S3</h2>			<h2 class="single3 inner">inS3</h2>			<h2 class="single3 outer">ouS3</h2>	</div>
-			<div class="select-row">	<h2 class="any2">Any 2 </h2>		<h2 class="triple2">T2</h2>						<h2 class="double2">D2</h2>			<h2 class="single2 any">S2</h2>			<h2 class="single2 inner">inS2</h2>			<h2 class="single2 outer">ouS2</h2>	</div>
-			<div class="select-row">	<h2 class="any1">Any 1 </h2>		<h2 class="triple1">T1</h2>						<h2 class="double1">D1</h2>			<h2 class="single1 any">S1</h2>			<h2 class="single1 inner">inS1</h2>			<h2 class="single1 outer">ouS1</h2>	</div>
+			<div class="select-row">	
+				<h2 class="any25" data-points="25" data-multiple="0">Any Bull</h2>		
+				<h2 class="double25" data-points="25" data-multiple="2">DBull</h2>		
+				<h2 class="single25" data-points="25" data-multiple="1">SBull</h2>			
+			</div>
+		<%= 20.times do |i| %>
+			<% if i == 20 then any = "any#{20-i} selected" else any = "any#{20-i}" end %>
+			<div class="select-row">	
+				<h2 class=<%= "any#{20 - i}" %> data-points=<%= 20-i %> data-multiple="0">Any <%= 20 - i %></h2>		
+				<h2 class=<%= "triple#{20 - i}" %> data-points=<%= 20-i %> data-multiple="3">T<%= 20 - i %></h2>					
+				<h2 class=<%= "double#{20 - i}" %> data-points=<%= 20-i %> data-multiple="2">D<%= 20 - i %></h2>		
+				<h2 class=<%= "single#{20 - i} any" %> data-points=<%= 20-i %> data-multiple="1">S<%= 20 - i %></h2>			
+				<h2 class=<%= "single#{20 - i} inner" %> data-points=<%= 20-i %> data-multiple="1" data-inout="Inner ">inS<%= 20 - i %></h2>		
+				<h2 class=<%= "single#{20 - i} outer" %> data-points=<%= 20-i %> data-multiple="1" data-inout="Outer ">ouS<%= 20 - i %></h2>	
+			</div>
+		<% end %>
 		</div>
 	</div>
 	<div class="spacer"></div>
@@ -61,15 +54,18 @@
 
 <div id="progress">
 	<div>
-		<h3><%= @session_hits %></h3>
+		<h3 id="session-hits">0</h3>
+		<div id="hits-sparkline"></div>
 		<p>HITS</p>
 	</div>
 	<div>
-		<h3><%= @session_misses %></h3>
+		<h3 id="session-misses">0</h3>
+		<div id="misses-sparkline"></div>
 		<p>MISSES</p>
 	</div>
 	<div>
-		<h3><%= "#{ @session_accuracy }%" %></h3>
+		<h3 id="session-accuracy">0</h3>
+		<div id="accuracy-sparkline"></div>
 		<p>ACCURACY</p>
 	</div>
 </div>

@@ -1,0 +1,450 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"tr",
+				"trainerLevel"
+			],
+			[
+				"hits_",
+				"hits_sparkline"
+			],
+			[
+				"aimingIn",
+				"aimingInOutClass"
+			],
+			[
+				"aimingMul",
+				"aimingMultipleString"
+			],
+			[
+				"translate",
+				"translateRadius"
+			],
+			[
+				"butt",
+				"buttonWidth"
+			],
+			[
+				"arc",
+				"arcOffsetY"
+			],
+			[
+				"p",
+				"p2y"
+			],
+			[
+				"toLo",
+				"toLowerCase"
+			],
+			[
+				"all",
+				"allAttributes"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app/assets/javascripts/cricket.coffee",
+			"settings":
+			{
+				"buffer_size": 2786,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/assets/stylesheets/controllers/cricket.sass",
+			"settings":
+			{
+				"buffer_size": 13925,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "app/views/cricket/index.html.erb",
+			"settings":
+			{
+				"buffer_size": 5525,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"build",
+				"Build: Build"
+			],
+			[
+				"lorem",
+				"Snippet: Lorem ipsum"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"package ",
+				"Preferences: Browse Packages"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"fold",
+				"Project: Add Folder"
+			],
+			[
+				"fol",
+				"Project: Add Folder"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 439.0,
+		"history":
+		[
+			"help",
+			"rails console",
+			"puts \"hello\"",
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/katehedgpeth/Documents/rails-apps/darts",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/javascripts",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets/base",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets/controllers",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/controllers",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/views",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/views/cricket",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/views/layouts",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/views/practice",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/db",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/db/migrate",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/vendor",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/vendor/assets",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/vendor/assets/javascripts"
+	],
+	"file_history":
+	[
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/views/practice/index.html.erb",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/javascripts/practice.js",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/controllers/practice_controller.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/javascripts/practice-coffee.coffee",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets/application.css",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets/main.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets/controllers/practice.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/javascripts/trainer.coffee",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets/base/var.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/stylesheets/base/mix.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/views/layouts/application.html.erb",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/db/migrate/20150117164252_create_users.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/db/schema.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/db/migrate/20150127213054_add_hit_count_to_turns.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/darts/app/assets/javascripts/practice.coffee",
+		"/Users/katehedgpeth/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/katehedgpeth/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/stylesheets/zaius.customer_explorer.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/views/layouts/application.html.erb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/javascripts/application.js",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/db/schema.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/db/seeds.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/Gemfile",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/controllers/customer_explorer_controller.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/javascripts/customer_explorer.coffee.erb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/views/customer_explorer/index.html.erb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/stylesheets/test.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/stylesheets/customer_explorer.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/starschema/app/controllers/hexbin_controller.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/customer_explorer/app/assets/javascripts/customer_discovery.js",
+		"/Users/katehedgpeth/Documents/rails-apps/starschema/app/views/hexbin/index.html.erb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/models/order_item.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/starschema/app/assets/javascripts/hexbin.js.coffee",
+		"/Users/katehedgpeth/Documents/rails-apps/starschema/app/controllers/customer_discovery_controller.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/stylesheets/application.css.scss",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/views/test/index.html.erb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/config/routes.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/javascripts/customer_explorer.coffee",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/config/initializers/assets.rb",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/stylesheets/main.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/m7/app/assets/stylesheets/unicorn.zaius.sass",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/customer_explorer/app/assets/stylesheets/application.css",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/customer_explorer/bin/spring",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/customer_explorer/app/assets/javascripts/mockaroo.json",
+		"/Users/katehedgpeth/Documents/rails-apps/glimpse/customer_explorer/app/assets/stylesheets/m6.sass"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"i ==",
+			"points",
+			"console",
+			"puts",
+			"console.log",
+			";",
+			"var ",
+			"children",
+			"helvetica",
+			";",
+			"var",
+			"var	",
+			"d3",
+			"//",
+			"::after",
+			"*= require",
+			"n",
+			";",
+			"2C3E50",
+			";"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"@import"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app/assets/javascripts/cricket.coffee",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2786,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								569,
+								569
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Better CoffeeScript/CoffeeScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "app/assets/stylesheets/controllers/cricket.sass",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13925,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								797,
+								797
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 424.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "app/views/cricket/index.html.erb",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5525,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2371,
+								2371
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Rails/HTML (Rails).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "darts.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sass",
+				"app/assets/stylesheets/zaius.application.sass"
+			],
+			[
+				"m6",
+				"app/assets/stylesheets/m6.sass"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 231.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,0 +1,95 @@
+	<div id="player1" class="left-side shooting board-side">
+		<div class="player-info">
+			<h1><%= @name %> </h1>
+			<h2 class="score">0</h2>
+		</div>
+		<div class="board">
+			<ul>
+				<li class="tally mark20" data-val="20" data-val="20" data-points="0" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark19" data-val="20" data-val="19" data-points="0" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark18" data-val="20" data-val="18" data-points="0" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark17" data-val="20" data-val="17" data-points="0" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark16" data-val="20" data-val="16" data-points="0" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark15" data-val="20" data-val="15" data-points="0" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark25" data-val="20" data-val="25" data-points="0" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+			</ul>
+		</div>
+		<div class="footer">
+		</div>
+
+	</div>
+	<div id="player2" class="right-side board-side">
+		<div class="player-info">
+			<h1><%= @opponent %> </h1>
+			<h2 class="score">0</h2>
+		</div>
+		<div class="board">
+			<ul>
+				<li class="tally mark20" data-val="20" data-score="20" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark19" data-val="20" data-score="19" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark18" data-val="20" data-score="18" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark17" data-val="20" data-score="17" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark16" data-val="20" data-score="16" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark15" data-val="20" data-score="15" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+				<li class="tally mark25" data-val="20" data-score="25" data-count="0"><span class="point-count"></span><canvas></canvas></li>
+			</ul>
+		</div>
+		<div class="footer">
+		</div>
+	</div>
+				
+	
+				
+	
+				
+<div id="score-input-container">
+	<div id="score-input">
+		<ul>
+			<li class="score-button">
+				<span class="score-number top-left" data-val="20">20</span>
+				<a href="javascript:void(0)" class="score20 score-cricket single" data-val="20" data-score="20">1</a>
+				<a href="javascript:void(0)" class="score20 score-cricket double" data-val="20" data-score="40">2</a>
+				<a href="javascript:void(0)" class="score20 score-cricket triple top-right" data-val="20" data-score="60">3</a>
+			</li>
+			<li class="score-button">
+				<span class="score-number" data-val="19">19</span>
+				<a href="javascript:void(0)" class="score19 score-cricket single" data-val="19" data-score="19">1</a>
+				<a href="javascript:void(0)" class="score19 score-cricket double" data-val="19" data-score="38">2</a>
+				<a href="javascript:void(0)" class="score19 score-cricket triple" data-val="19" data-score="57">3</a>
+			</li>
+			<li class="score-button">
+				<span class="score-number" data-val="18">18</span>
+				<a href="javascript:void(0)" class="score18 score-cricket single" data-val="18" data-score="18">1</a>
+				<a href="javascript:void(0)" class="score18 score-cricket double" data-val="18" data-score="36">2</a>
+				<a href="javascript:void(0)" class="score18 score-cricket triple" data-val="18" data-score="54">3</a>
+			</li>
+			<li class="score-button">
+				<span class="score-number" data-val="17">17</span>
+				<a href="javascript:void(0)" class="score17 score-cricket single" data-val="17" data-score="17">1</a>
+				<a href="javascript:void(0)" class="score17 score-cricket double" data-val="17" data-score="34">2</a>
+				<a href="javascript:void(0)" class="score17 score-cricket triple" data-val="17" data-score="51">3</a>
+			</li>
+			<li class="score-button">
+				<span class="score-number" data-val="16">16</span>
+				<a href="javascript:void(0)" class="score16 score-cricket single" data-val="16" data-score="16">1</a>
+				<a href="javascript:void(0)" class="score16 score-cricket double" data-val="16" data-score="32">2</a>
+				<a href="javascript:void(0)" class="score16 score-cricket triple" data-val="16" data-score="48">3</a>
+			</li>
+			<li class="score-button">
+				<span class="score-number" data-val="15">15</span>
+				<a href="javascript:void(0)" class="score15 score-cricket single" data-val="15" data-score="15">1</a>
+				<a href="javascript:void(0)" class="score15 score-cricket double" data-val="15" data-score="30">2</a>
+				<a href="javascript:void(0)" class="score15 score-cricket triple" data-val="15" data-score="45">3</a>
+			</li>
+			<li class="score-button">
+				<span class="score-number bottom-left" data-val="25">25</span>
+				<a href="javascript:void(0)" class="score25 score-cricket single" data-val="25" data-score="25">1</a>
+				<a href="javascript:void(0)" class="score25 score-cricket double" data-val="25" data-score="50">2</a>
+				<a href="javascript:void(0)" class="score25 score-cricket triple bottom-right" data-val="25" data-score="75">3</a>
+			</li>
+<!-- 			<li><a href="#" class="next-cricket">Next <i class="fa fa-arrow-right fa-fw"></i></a></li> -->		
+		</ul>
+	</div>
+</div>
+		
+	

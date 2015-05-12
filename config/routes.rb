@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'cricket/index'
+
 	root 'login#index'
-	resources :test, :home, :around, :practice, :login, :account
+	resources :test, :home, :around, :practice, :login, :account, :cricket
 	
  	post 'login', to: 'login#create'
  	delete 'login', to: 'login#destroy'
